@@ -4,9 +4,8 @@
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
-    import org.springframework.web.bind.annotation.GetMapping;
-    import org.springframework.web.bind.annotation.PostMapping;
-    import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.*;
+
     import java.util.List;
 
 
@@ -28,8 +27,24 @@
             return "home/AddBenhNhan";
        }
        @PostMapping("/AddBenhNhan")
-        public String create(BenhNhan benhNhan,Model model){
+        public String create(BenhNhan benhNhan){
             benhnhanService.add(benhNhan);
+            return "redirect:/home/home";
+       }
+       @GetMapping("/delete/{id}")
+        public String delete(@PathVariable("id") int id){
+                benhnhanService.delete(id);
+                return "redirect:/home/home";
+
+       }
+       @GetMapping("/editBenhNhan/{id}")
+        public String edit(@PathVariable("id") int id, Model model){
+            model.addAttribute("benhNhan",benhnhanService.findId(id));
+            return "home/editBenhNhan";
+       }
+       @PostMapping ("/editBenhNhan")
+        public String edit(@ModelAttribute("benhNhan") BenhNhan benhNhan){
+            benhnhanService.edit(benhNhan);
             return "redirect:/home/home";
        }
     }

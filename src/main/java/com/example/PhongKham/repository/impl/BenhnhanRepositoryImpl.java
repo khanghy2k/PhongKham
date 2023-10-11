@@ -49,8 +49,25 @@ public class BenhnhanRepositoryImpl implements BenhnhanRepository {
 
     @Override
     public BenhNhan findId(int id) {
+        Connection cn = null;
+        CallableStatement cs = null;
+        try {
+            cn = MySqlConnection.open();
+            cs = cn.prepareCall("CALL sp_benh_nhan_byId(?)");
+            cs.setInt(1, id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
         return null;
     }
+
 
     @Override
     public void add(BenhNhan benhNhan) {
@@ -80,12 +97,52 @@ public class BenhnhanRepositoryImpl implements BenhnhanRepository {
 
     @Override
     public void edit(BenhNhan benhNhan) {
+        Connection cn = null;
+        CallableStatement cs = null;
+        try {
+            cn = MySqlConnection.open();
+            cs = cn.prepareCall("CALL sp_benh_nhan_update(?,?,?,?,?,?,?)");
+            cs.setInt(1,benhNhan.getMaBenhnhan());
+            cs.setString(2,benhNhan.getTenBenhnhan());
+            cs.setTimestamp(3,new Timestamp(benhNhan.getNgaysinh().getTime()));
+            cs.setString(4,benhNhan.getGioitinh());
+            cs.setString(5,benhNhan.getDiachi());
+            cs.setString(6,benhNhan.getSodienthoai());
+            cs.setString(7,benhNhan.getEmail());
+            int result = cs.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
 
     }
 
     @Override
-    public void delete(BenhNhan benhNhan) {
-
+    public void delete(int id) {
+        Connection cn = null;
+        CallableStatement cs = null;
+        try {
+            cn = MySqlConnection.open();
+            cs = cn.prepareCall("CALL sp_benh_nhan_delete(?)");
+            cs.setInt(1,id);
+            int result = cs.executeUpdate();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            try {
+                cs.close();
+                cn.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
 }

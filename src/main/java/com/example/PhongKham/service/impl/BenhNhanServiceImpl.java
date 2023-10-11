@@ -37,7 +37,8 @@ public class BenhNhanServiceImpl implements BenhnhanService {
     }
 
     @Override
-    public void delete(BenhNhan benhNhan) {
-        benhnhanRepository.delete(benhNhan);
+    public void delete(int id) {
+        benhnhanRepository.delete(id);
     }
+
 }

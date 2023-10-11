@@ -98,13 +98,14 @@
                       <h6 class="mb-0 fw-normal" th:text="${b.email}"></h6>
                     </td>
                     <td>
-                      <a th:href="@{'/edit/' + ${b.maBenhnhan}}">
+                      <a th:href="@{/home/editBenhNhan/{id}(id=${b.maBenhnhan})}">
                         <i class="fas fa-edit text-primary"></i> <!-- Icon chỉnh sửa -->
                       </a>
 
-                      <a th:href="@{'/delete/' + ${b.maBenhnhan}}">
+                      <a th:href="@{/home/delete/{id}(id=${b.maBenhnhan})}">
                         <i class="fas fa-trash text-danger"></i> <!-- Icon xóa -->
                       </a>
+
 
                       <a th:href="@{'/phienkham/' + ${b.maBenhnhan}}">
                         <i class="fas fa-calendar"></i> <!-- Icon phiên khám -->

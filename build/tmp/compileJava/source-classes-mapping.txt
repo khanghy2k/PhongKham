@@ -16,8 +16,8 @@ com/example/PhongKham/repository/LoginRepository.java
  com.example.PhongKham.repository.LoginRepository
 com/example/PhongKham/config/CustomerUserDetails.java
  com.example.PhongKham.config.CustomerUserDetails
-com/example/PhongKham/repository/impl/BenhnhanRepositoryImpl.java
- com.example.PhongKham.repository.impl.BenhnhanRepositoryImpl
+com/example/PhongKham/controller/LoginController.java
+ com.example.PhongKham.controller.LoginController
 com/example/PhongKham/repository/impl/LoginRepositoryImpl.java
  com.example.PhongKham.repository.impl.LoginRepositoryImpl
 com/example/PhongKham/config/UserDetailsServiceImpl.java
@@ -26,15 +26,15 @@ com/example/PhongKham/service/LoginService.java
  com.example.PhongKham.service.LoginService
 com/example/PhongKham/model/Login.java
  com.example.PhongKham.model.Login
+com/example/PhongKham/model/BenhNhan.java
+ com.example.PhongKham.model.BenhNhan
 com/example/PhongKham/repository/BenhnhanRepository.java
  com.example.PhongKham.repository.BenhnhanRepository
 com/example/PhongKham/service/BenhnhanService.java
  com.example.PhongKham.service.BenhnhanService
 com/example/PhongKham/service/impl/BenhNhanServiceImpl.java
  com.example.PhongKham.service.impl.BenhNhanServiceImpl
-com/example/PhongKham/model/BenhNhan.java
- com.example.PhongKham.model.BenhNhan
-com/example/PhongKham/controller/LoginController.java
- com.example.PhongKham.controller.LoginController
+com/example/PhongKham/repository/impl/BenhnhanRepositoryImpl.java
+ com.example.PhongKham.repository.impl.BenhnhanRepositoryImpl
 com/example/PhongKham/controller/HomeController.java
  com.example.PhongKham.controller.HomeController

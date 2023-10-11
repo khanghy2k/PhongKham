@@ -11,6 +11,6 @@ public interface BenhnhanRepository {
     BenhNhan findId(int id);
     void add(BenhNhan benhNhan);
     void edit(BenhNhan benhNhan);
-    void delete(BenhNhan benhNhan);
+    void delete(int id);
 
 }
