@@ -4,8 +4,6 @@ import com.example.PhongKham.model.Users;
 import com.example.PhongKham.repository.LoginRepository;
 import com.example.PhongKham.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -14,12 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
 
     @Autowired
     private LoginRepository loginRepository;
+
+
 
 
     @Override
@@ -29,8 +27,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void register(Users users) {
-
-        users.setPassword(passwordEncoder.encode(users.getPassword()));
         loginRepository.register(users);
     }
 
@@ -43,6 +39,8 @@ public class LoginServiceImpl implements LoginService {
     public Users findByUsername(String username) {
         return loginRepository.findByUsername(username);
     }
+
+
 }
 
 

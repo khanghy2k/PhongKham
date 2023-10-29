@@ -5,6 +5,7 @@ import com.example.PhongKham.model.Users;
 import com.example.PhongKham.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,12 +27,6 @@ public class RegisterController {
         this.loginService = loginService;
     }
 
-    @InitBinder
-    public void initBinder(WebDataBinder dataBinder) {
-        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-    }
-
     @GetMapping("/register")
     public String register(@ModelAttribute Users users, Model model) {
         model.addAttribute("users", new Users());
@@ -39,17 +34,17 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid Users users, BindingResult bindingResult, ModelMap modelMap) {
+    public String register(@Valid Users users, BindingResult bindingResult,Model model) {
         if (bindingResult.hasErrors()) {
             return "home/register";
         }
         // Kiem tra trung lap
         if (loginService.isUsernameExists(users.getUsername(), users.getEmail())) {
-            modelMap.addAttribute("error", "Tên người dùng hoặc email đã tồn tại . Vui lòng nhập lại ");
+            model.addAttribute("error", "Tên người dùng hoặc email đã tồn tại . Vui lòng nhập lại ");
             return "home/register";
         }
-
-
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        users.setPassword(passwordEncoder.encode(users.getPassword()));
         // Thực hiện đăng ký
         loginService.register(users);
         return "redirect:/login";

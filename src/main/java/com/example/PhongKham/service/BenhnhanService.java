@@ -9,7 +9,10 @@ import java.util.List;
 public interface BenhnhanService {
     List<BenhNhan> findAll();
     BenhNhan findId(int id);
+    List<BenhNhan> findName(String name);
     void add(BenhNhan benhNhan);
     void edit(BenhNhan benhNhan);
     void delete(int id);
+    List<BenhNhan> findLichHen(int id);
+    List<BenhNhan> pageBenhNhan(int limit, int offset);
 }

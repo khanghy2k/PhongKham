@@ -29,21 +29,15 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.0.0'
     implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.1.0.Final'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.7.3'
-
-
-
-
-
-
-
+    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.3.0.RELEASE'
 
 
 }
+compileJava.options.encoding = 'UTF-8'
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
 test {
+    systemProperty "file.encoding", "utf-8"
     useJUnitPlatform()
 }

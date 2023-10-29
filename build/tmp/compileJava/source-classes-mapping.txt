@@ -1,40 +1,78 @@
-com/example/PhongKham/util/MySqlConnection.java
- com.example.PhongKham.util.MySqlConnection
-com/example/PhongKham/config/SecurityConfig.java
- com.example.PhongKham.config.SecurityConfig
-com/example/PhongKham/config/AppConfig.java
- com.example.PhongKham.config.AppConfig
-com/example/PhongKham/config/WebSpringConfig.java
- com.example.PhongKham.config.WebSpringConfig
-com/example/PhongKham/service/impl/LoginServiceImpl.java
- com.example.PhongKham.service.impl.LoginServiceImpl
-com/example/PhongKham/model/Users.java
- com.example.PhongKham.model.Users
-com/example/PhongKham/controller/RegisterController.java
- com.example.PhongKham.controller.RegisterController
-com/example/PhongKham/repository/LoginRepository.java
- com.example.PhongKham.repository.LoginRepository
-com/example/PhongKham/config/CustomerUserDetails.java
- com.example.PhongKham.config.CustomerUserDetails
-com/example/PhongKham/controller/LoginController.java
- com.example.PhongKham.controller.LoginController
-com/example/PhongKham/repository/impl/LoginRepositoryImpl.java
- com.example.PhongKham.repository.impl.LoginRepositoryImpl
-com/example/PhongKham/config/UserDetailsServiceImpl.java
- com.example.PhongKham.config.UserDetailsServiceImpl
-com/example/PhongKham/service/LoginService.java
- com.example.PhongKham.service.LoginService
-com/example/PhongKham/model/Login.java
- com.example.PhongKham.model.Login
-com/example/PhongKham/model/BenhNhan.java
- com.example.PhongKham.model.BenhNhan
-com/example/PhongKham/repository/BenhnhanRepository.java
- com.example.PhongKham.repository.BenhnhanRepository
 com/example/PhongKham/service/BenhnhanService.java
  com.example.PhongKham.service.BenhnhanService
+com/example/PhongKham/repository/LoginRepository.java
+ com.example.PhongKham.repository.LoginRepository
+com/example/PhongKham/repository/impl/DichvuRepositoryImpl.java
+ com.example.PhongKham.repository.impl.DichvuRepositoryImpl
+com/example/PhongKham/repository/impl/LichHenRepositoryImpl.java
+ com.example.PhongKham.repository.impl.LichHenRepositoryImpl
+com/example/PhongKham/model/Thuoc.java
+ com.example.PhongKham.model.Thuoc
+com/example/PhongKham/util/MySqlConnection.java
+ com.example.PhongKham.util.MySqlConnection
+com/example/PhongKham/service/impl/LoginServiceImpl.java
+ com.example.PhongKham.service.impl.LoginServiceImpl
+com/example/PhongKham/service/impl/LichHenServiceImpl.java
+ com.example.PhongKham.service.impl.LichHenServiceImpl
+com/example/PhongKham/repository/LichHenRepository.java
+ com.example.PhongKham.repository.LichHenRepository
+com/example/PhongKham/model/LichHen.java
+ com.example.PhongKham.model.LichHen
+com/example/PhongKham/model/BenhNhan.java
+ com.example.PhongKham.model.BenhNhan
+com/example/PhongKham/service/LoginService.java
+ com.example.PhongKham.service.LoginService
+com/example/PhongKham/config/AppConfig.java
+ com.example.PhongKham.config.AppConfig
+com/example/PhongKham/service/impl/DichVuServiceImpl.java
+ com.example.PhongKham.service.impl.DichVuServiceImpl
+com/example/PhongKham/service/DichVuService.java
+ com.example.PhongKham.service.DichVuService
 com/example/PhongKham/service/impl/BenhNhanServiceImpl.java
  com.example.PhongKham.service.impl.BenhNhanServiceImpl
-com/example/PhongKham/repository/impl/BenhnhanRepositoryImpl.java
- com.example.PhongKham.repository.impl.BenhnhanRepositoryImpl
 com/example/PhongKham/controller/HomeController.java
  com.example.PhongKham.controller.HomeController
+com/example/PhongKham/controller/DichVuController.java
+ com.example.PhongKham.controller.DichVuController
+com/example/PhongKham/model/DichVu.java
+ com.example.PhongKham.model.DichVu
+com/example/PhongKham/repository/DichVuRepository.java
+ com.example.PhongKham.repository.DichVuRepository
+com/example/PhongKham/config/WebSpringConfig.java
+ com.example.PhongKham.config.WebSpringConfig
+com/example/PhongKham/repository/BenhnhanRepository.java
+ com.example.PhongKham.repository.BenhnhanRepository
+com/example/PhongKham/model/Login.java
+ com.example.PhongKham.model.Login
+com/example/PhongKham/model/Users.java
+ com.example.PhongKham.model.Users
+com/example/PhongKham/repository/impl/LoginRepositoryImpl.java
+ com.example.PhongKham.repository.impl.LoginRepositoryImpl
+com/example/PhongKham/controller/LoginController.java
+ com.example.PhongKham.controller.LoginController
+com/example/PhongKham/service/LichHenService.java
+ com.example.PhongKham.service.LichHenService
+com/example/PhongKham/controller/RegisterController.java
+ com.example.PhongKham.controller.RegisterController
+com/example/PhongKham/repository/impl/BenhnhanRepositoryImpl.java
+ com.example.PhongKham.repository.impl.BenhnhanRepositoryImpl
+com/example/PhongKham/repository/PhienKhamRepository.java
+ com.example.PhongKham.repository.PhienKhamRepository
+com/example/PhongKham/service/DonThuocService.java
+ com.example.PhongKham.service.DonThuocService
+com/example/PhongKham/model/PhienKham.java
+ com.example.PhongKham.model.PhienKham
+com/example/PhongKham/repository/DonthuocRepository.java
+ com.example.PhongKham.repository.DonthuocRepository
+com/example/PhongKham/repository/impl/DonThuocRepositoryImpl.java
+ com.example.PhongKham.repository.impl.DonThuocRepositoryImpl
+com/example/PhongKham/service/PhienKhamService.java
+ com.example.PhongKham.service.PhienKhamService
+com/example/PhongKham/controller/CrudKhController.java
+ com.example.PhongKham.controller.CrudKhController
+com/example/PhongKham/service/impl/PhienKhamServiceImpl.java
+ com.example.PhongKham.service.impl.PhienKhamServiceImpl
+com/example/PhongKham/service/impl/DonThuocServiceImpl.java
+ com.example.PhongKham.service.impl.DonThuocServiceImpl
+com/example/PhongKham/repository/impl/PhienKhamRepositoryImpl.java
+ com.example.PhongKham.repository.impl.PhienKhamRepositoryImpl

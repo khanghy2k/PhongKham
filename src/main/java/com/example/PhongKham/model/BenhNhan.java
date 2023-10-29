@@ -2,24 +2,38 @@ package com.example.PhongKham.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
-
 public class BenhNhan {
-    private int MaBenhnhan;
+    private Integer MaBenhnhan;
+    @NotEmpty(message = "Tên Bệnh Nhân không được để trống")
+    @NotBlank(message = "Tên Bệnh Nhân không được chứa khoảng trắng")
     private String TenBenhnhan;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date Ngaysinh;
+    @NotEmpty(message = "Giới Tính không được để trống")
+    @NotBlank(message = "Giới Tính không được chứa khoảng trắng")
     private String Gioitinh;
+    @NotEmpty(message = "Địa Chỉ không được để trống")
+    @NotBlank(message = "Địa Chỉ không được chứa khoảng trắng")
     private String Diachi;
+    @NotEmpty(message = "Số Điện Thoại không được để trống")
     private String Sodienthoai;
+    @NotEmpty(message = "Email không hợp lệ")
     private String Email;
+    private Integer CanNang;
+    private Integer ChieuCao;
+    private String Nhommau;
+    private String DiUng;
 
     public BenhNhan() {
     }
 
-    public BenhNhan(int maBenhnhan, String tenBenhnhan, Date ngaysinh, String gioitinh, String diachi, String sodienthoai, String email) {
+    public BenhNhan(Integer maBenhnhan, String tenBenhnhan, Date ngaysinh, String gioitinh, String diachi, String sodienthoai, String email, Integer canNang, Integer chieuCao, String nhommau, String diUng) {
         MaBenhnhan = maBenhnhan;
         TenBenhnhan = tenBenhnhan;
         Ngaysinh = ngaysinh;
@@ -27,13 +41,17 @@ public class BenhNhan {
         Diachi = diachi;
         Sodienthoai = sodienthoai;
         Email = email;
+        CanNang = canNang;
+        ChieuCao = chieuCao;
+        Nhommau = nhommau;
+        DiUng = diUng;
     }
 
-    public int getMaBenhnhan() {
+    public Integer getMaBenhnhan() {
         return MaBenhnhan;
     }
 
-    public void setMaBenhnhan(int maBenhnhan) {
+    public void setMaBenhnhan(Integer maBenhnhan) {
         MaBenhnhan = maBenhnhan;
     }
 
@@ -83,5 +101,37 @@ public class BenhNhan {
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public Integer getCanNang() {
+        return CanNang;
+    }
+
+    public void setCanNang(Integer canNang) {
+        CanNang = canNang;
+    }
+
+    public Integer getChieuCao() {
+        return ChieuCao;
+    }
+
+    public void setChieuCao(Integer chieuCao) {
+        ChieuCao = chieuCao;
+    }
+
+    public String getNhommau() {
+        return Nhommau;
+    }
+
+    public void setNhommau(String nhommau) {
+        Nhommau = nhommau;
+    }
+
+    public String getDiUng() {
+        return DiUng;
+    }
+
+    public void setDiUng(String diUng) {
+        DiUng = diUng;
     }
 }

@@ -4,9 +4,7 @@ import com.example.PhongKham.model.BenhNhan;
 import com.example.PhongKham.repository.BenhnhanRepository;
 import com.example.PhongKham.service.BenhnhanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 
@@ -27,6 +25,11 @@ public class BenhNhanServiceImpl implements BenhnhanService {
     }
 
     @Override
+    public List<BenhNhan> findName(String name) {
+        return benhnhanRepository.findName(name);
+    }
+
+    @Override
     public void add(BenhNhan benhNhan) {
         benhnhanRepository.add(benhNhan);
     }
@@ -40,5 +43,16 @@ public class BenhNhanServiceImpl implements BenhnhanService {
     public void delete(int id) {
         benhnhanRepository.delete(id);
     }
+
+    @Override
+    public List<BenhNhan> findLichHen(int id) {
+        return benhnhanRepository.findLichHen(id);
+    }
+
+    @Override
+    public List<BenhNhan> pageBenhNhan(int limit, int offset) {
+        return benhnhanRepository.pageBenhNhan(limit, offset);
+    }
+
 
 }

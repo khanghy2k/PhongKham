@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -47,6 +48,8 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     public LocalValidatorFactoryBean validatorFactoryBean() {
         return new LocalValidatorFactoryBean();
     }
+
+
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -113,4 +116,5 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         multipartResolver.setMaxUploadSize(1024 * 1024 * 50);
         return multipartResolver;
     }
+
 }

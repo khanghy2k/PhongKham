@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Bệnh Nhân</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{../images/logos/favicon.png}"/>
+    <link rel="stylesheet" th:href="@{../css/styles.min.css}"/>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css}"
+          integrity="sha512-..." crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{../css/benhnhancss.css}"/>
+</head>
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div>
+            <div class="brand-logo d-flex align-items-center justify-content-between">
+                <a th:href="@{/home/home}" class="text-nowrap logo-img">
+                    <img th:src="@{../images/logos/dark-logo.svg}" width="180" alt=""/>
+                </a>
+                <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                    <i class="ti ti-x fs-8"></i>
+                </div>
+            </div>
+            <div th:replace="layout/sidebarNavigation.html::sidebar"></div>
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <div class="body-wrapper">
+        <div th:replace="layout/header::header"></div>
+        <div class="row">
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="card-body p-4 mt-5">
+                        <div class="container">
+                            <header>Phiên Khám</header>
+                            <form action="#" th:action="@{/phienkham}" th:object="${phienKham}" method="post">
+                                <input type="hidden" th:field="*{maPhienKham}">
+                                <input type="hidden" th:field="*{maBenhNhan}"  />
+                                <div class="form first">
+                                    <div class="details personal">
+                                        <div class="fields">
+                                            <div class="input-field">
+                                                <label>Triệu Chứng</label>
+                                                <input type="text" th:field="*{trieuChung}">
+                                                <p class="error-message" th:if="${#fields.hasErrors('trieuChung')}"
+                                                   th:errors="*{trieuChung}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Ngày Khám</label>
+                                                <input  name="ngayKham" type="date" th:field="*{ngayKham}">
+                                                <p class="error-message" th:if="${#fields.hasErrors('ngayKham')}"
+                                                   th:errors="*{ngayKham}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Kết Luận</label>
+                                                <input name="ketLuan" type="text" th:field="*{ketLuan}">
+                                                <p class="error-message" th:if="${#fields.hasErrors('ketLuan')}"
+                                                   th:errors="*{ketLuan}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Tiền Khám</label>
+                                                <input  name="tienKham" type="text" th:field="*{tienKham}">
+                                                <p class="error-message" th:if="${#fields.hasErrors('tienKham')}"
+                                                   th:errors="*{tienKham}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Tiền Thuốc</label>
+                                                <input name="tienThuoc" type="text" th:field="*{tienThuoc}">
+                                                <p class="error-message" th:if="${#fields.hasErrors('tienThuoc')}"
+                                                   th:errors="*{tienThuoc}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Trạng Thái</label>
+                                                <select name="trangThai" th:field="*{trangThai}">
+                                                    <option value="Đã Khám">Da Kham</option>
+                                                    <option value="Chưa Khám">Chua Kham</option>
+                                                </select>
+                                                <p class="error-message" th:if="${#fields.hasErrors('trangThai')}"
+                                                   th:errors="*{trangThai}">Lỗi giới tính</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <button class="nextBtn">
+                                                    <span class="btnText">Thêm</span>
+                                                    <i class="uil uil-navigator"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="card-body p-4 mt-5">
+                        <div class="container">
+                            <header>Thông tin hành chính</header>
+                            <form action="#" th:action="@{/phienkham}" th:object="${benhNhan}" method="post">
+                                <input type="hidden" th:field="*{maBenhnhan}">
+                                <div class="form first">
+                                    <div class="details personal">
+                                        <div class="fields">
+                                            <div class="input-field">
+                                                <label>Họ Và Tên</label>
+                                                <input name="tenBenhnhan" type="text" th:field="*{tenBenhnhan}"
+                                                       placeholder="Enter your name">
+                                                <p class="error-message" th:if="${#fields.hasErrors('tenBenhnhan')}"
+                                                   th:errors="*{tenBenhnhan}">Lỗi tài khoản</p>
+                                            </div>
+
+                                            <div class="input-field">
+                                                <label>Ngày Sinh</label>
+                                                <input  name="ngaysinh" type="date" th:field="*{ngaysinh}"
+                                                        placeholder="Enter birth date">
+                                                <p class="error-message" th:if="${#fields.hasErrors('ngaysinh')}"
+                                                   th:errors="*{ngaysinh}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Địa Chỉ</label>
+                                                <input name="diachi" type="text" th:field="*{diachi}"
+                                                       placeholder="Enter your address">
+                                                <p class="error-message" th:if="${#fields.hasErrors('diachi')}"
+                                                   th:errors="*{diachi}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Số Điện thoại</label>
+                                                <input name="sodienthoai" type="text" th:field="*{sodienthoai}"
+                                                       placeholder="Enter your phone">
+                                                <p class="error-message" th:if="${#fields.hasErrors('sodienthoai')}"
+                                                   th:errors="*{sodienthoai}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Email</label>
+                                                <input name="email" type="email" th:field="*{email}" placeholder="Enter your email">
+                                                <p class="error-message" th:if="${#fields.hasErrors('email')}"
+                                                   th:errors="*{email}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Giới Tính</label>
+                                                <select name="gioitinh" th:field="*{gioitinh}">
+                                                    <option value="Nam">Nam</option>
+                                                    <option value="Nữ">Nữ</option>
+                                                </select>
+                                                <p class="error-message" th:if="${#fields.hasErrors('gioitinh')}"
+                                                   th:errors="*{gioitinh}">Lỗi giới tính</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Cân Nặng</label>
+                                                <input  name="canNang" type="text" th:field="*{canNang}"
+                                                        placeholder="Kg">
+                                                <p class="error-message" th:if="${#fields.hasErrors('canNang')}"
+                                                   th:errors="*{canNang}">Lỗi tài khoản</p>
+                                            </div>
+
+                                            <div class="input-field">
+                                                <label>Chiều Cao</label>
+                                                <input name="chieuCao" type="text" th:field="*{chieuCao}"
+                                                       placeholder="Cm">
+                                                <p class="error-message" th:if="${#fields.hasErrors('chieuCao')}"
+                                                   th:errors="*{chieuCao}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Nhóm máu</label>
+                                                <input name="nhommau" type="text" th:field="*{nhommau}"
+                                                       placeholder="Rh+">
+                                                <p class="error-message" th:if="${#fields.hasErrors('nhommau')}"
+                                                   th:errors="*{nhommau}">Lỗi tài khoản</p>
+                                            </div>
+                                            <div class="input-field">
+                                                <label>Dị Ứng</label>
+                                                <textarea name="diUng" th:field="*{diUng}" cols="10" rows="10"></textarea>
+                                                <p class="error-message" th:if="${#fields.hasErrors('diUng')}"
+                                                   th:errors="*{diUng}">Lỗi tài khoản</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{../libs/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{../libs/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{../js/sidebarmenu.js}"></script>
+<script th:src="@{../js/app.min.js}"></script>
+<script th:src="@{../libs/apexcharts/dist/apexcharts.min.js}"></script>
+<script th:src="@{../libs/simplebar/dist/simplebar.js}"></script>
+<script th:src="@{../js/dashboard.js}"></script>
+</body>
+</html>

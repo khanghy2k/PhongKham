@@ -3,124 +3,270 @@
 
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" th:href="@{../images/logos/favicon.png}" />
-  <link rel="stylesheet" th:href="@{../css/styles.min.css}" />
-  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css}" integrity="sha512-..." crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize Free</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{../images/logos/favicon.png}"/>
+    <link rel="stylesheet" th:href="@{../css/styles.min.css}"/>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css}"
+          integrity="sha512-..." crossorigin="anonymous"/>
 
 
 </head>
+<style>
+    .error-message {
+        color: red;
+    }
 
+    .custom-form {
+        margin: 10px;
+
+    }
+
+    /* Style the input */
+    .custom-form input[type="text"] {
+        border-radius: 10px;
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        float: right;
+    }
+
+    /* Style the button */
+    .custom-form button {
+        border-radius: 10px;
+        background-color: white;
+        margin: 10px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        float: right;
+    }
+
+    .validation-message {
+        color: red;
+        float: right;
+    }
+
+</style>
 <body>
 <!--  Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
-  <!-- Sidebar Start -->
-  <aside class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div>
-      <div class="brand-logo d-flex align-items-center justify-content-between">
-        <a th:href="@{/home/home}" class="text-nowrap logo-img">
-          <img th:src="@{../images/logos/dark-logo.svg}" width="180" alt="" />
-        </a>
-        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-          <i class="ti ti-x fs-8"></i>
-        </div>
-      </div>
-      <div th:replace="layout/sidebarNavigation.html::sidebar"></div>
-    </div>
-    <!-- End Sidebar scroll-->
-  </aside>
-  <!--  Sidebar End -->
-  <!--  Main wrapper -->
-  <div class="body-wrapper">
-    <div th:replace="layout/header.html::header">
-    </div>
-    <div class="container-fluid">
-      <!--  Row 1 -->
-      <div class="row">
-        <div class="col-lg-12 d-flex align-items-stretch">
-          <div class="card w-100">
-            <div class="card-body p-4">
-              <h5 class="card-title fw-semibold mb-4">Danh Sách Khách Hàng</h5>
-              <!-- Biểu tượng thêm -->
-              <a th:href="@{/home/AddBenhNhan}" class="btn btn-success btn-sm mr-lg-5">
-                <i class="fas fa-plus"></i> Thêm Khách Hàng
-              </a>
-              <div class="table-responsive">
-                <table class="table text-nowrap mb-0 w-150 align-middle">
-                  <thead class="text-dark fs-4">
-                  <tr>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Tên Bệnh Nhân</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Ngày Sinh</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Giới Tính</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Địa Chỉ</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Số Điện thoại</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Email</h6>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0">Hành Động</h6>
-                    </th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr th:each="b : ${benhNhan}">
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${b.tenBenhnhan}"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${#dates.format(b.ngaysinh, 'dd/MM/yy')}"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${b.gioitinh}"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${b.diachi}"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${b.sodienthoai}"></h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="mb-0 fw-normal" th:text="${b.email}"></h6>
-                    </td>
-                    <td>
-                      <a th:href="@{/home/editBenhNhan/{id}(id=${b.maBenhnhan})}">
-                        <i class="fas fa-edit text-primary"></i> <!-- Icon chỉnh sửa -->
-                      </a>
-
-                      <a th:href="@{/home/delete/{id}(id=${b.maBenhnhan})}">
-                        <i class="fas fa-trash text-danger"></i> <!-- Icon xóa -->
-                      </a>
-
-
-                      <a th:href="@{'/phienkham/' + ${b.maBenhnhan}}">
-                        <i class="fas fa-calendar"></i> <!-- Icon phiên khám -->
-                      </a>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div>
+            <div class="brand-logo d-flex align-items-center justify-content-between">
+                <a th:href="@{/home/home}" class="text-nowrap logo-img">
+                    <img th:src="@{../images/logos/dark-logo.svg}" width="180" alt=""/>
+                </a>
+                <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                    <i class="ti ti-x fs-8"></i>
+                </div>
             </div>
-          </div>
+            <div th:replace="layout/sidebarNavigation.html::sidebar"></div>
         </div>
-      </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+        <div th:replace="layout/header.html::header">
+        </div>
+        <div class="container-fluid">
+            <!--  Row 1 -->
+            <div class="row">
+                <div class="col-lg-12 d-flex align-items-stretch">
+                    <div class="card w-100">
+                        <div class="card-body p-4">
+                            <!--                            <form th:action="@{/search}" method="get" class="custom-form">-->
+                            <!--                                <input type="text" name="name">-->
+                            <!--                                <button type="submit">Tìm Kiếm</button>-->
+                            <!--                            </form>-->
+                            <!--                            <div class="validation-message">-->
+                            <!--                                <span th:text="${message}"></span>-->
+                            <!--                            </div>-->
+                            <h5 class="card-title fw-semibold mb-4">Bệnh Nhân</h5>
+                            <!-- Biểu tượng thêm -->
+                            <a th:href="@{/AddBenhNhan}" class="btn btn-success btn-sm mr-lg-5">
+                                <i class="fas fa-plus"></i> Thêm Bệnh Nhân
+                            </a>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 w-150 align-middle">
+                                    <thead class="text-dark fs-4">
+                                    <tr>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Tên Bệnh Nhân</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Ngày Sinh</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Giới Tính</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Địa Chỉ</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Số Điện thoại</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Email</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Hành Động</h6>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="b : ${benhNhan}">
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal" th:text="${b.tenBenhnhan}"></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal"
+                                                th:text="${#dates.format(b.ngaysinh, 'dd/MM/yy')}"></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal" th:text="${b.gioitinh}"></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal" th:text="${b.diachi}"></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal" th:text="${b.sodienthoai}"></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="mb-0 fw-normal" th:text="${b.email}"></h6>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{/edit/{id}(id=${b.maBenhnhan})}">
+                                                <i class="fas fa-edit text-primary"></i>
+                                            </a>
+
+                                            <a th:href="@{/delete/{id}(id=${b.maBenhnhan})}">
+                                                <i class="fas fa-trash text-danger"></i>
+                                            </a>
+                                            <a th:href="@{/lichhen/{id}(id=${b.maBenhnhan})}">
+                                                <i class="fa fa-calendar" style="color:black"></i>
+                                            </a><!-- Icon lịch hẹn -->
+                                            <a th:href="@{/phienkham/{id}(id=${b.maBenhnhan})}">
+                                                <i class="fas fa-calendar"></i> <!-- Icon phiên khám -->
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="card w-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-semibold mb-4">Phiên Khám</h5>
+                            <!-- Biểu tượng thêm -->
+                            <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 w-150 align-middle">
+                                    <thead class="text-dark fs-4">
+                                    <tr>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Tên Bệnh Nhân</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Trạng Thái</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Tổng Tiền</h6>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="b : ${benhNhan}">
+                                        <th:block th:each="l : ${phienkham}" th:if="${l.maBenhNhan == b.maBenhnhan}">
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal" th:text="${b.tenBenhnhan}"></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal" th:text="${l.trangThai}"></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal" th:text="${l.tongTien}"></h6>
+                                                </td>
+                                            </tr>
+                                        </th:block>
+                                    </th:block>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 d-flex align-items-stretch">
+                    <div class="card w-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title fw-semibold mb-4">Lịch Hẹn</h5>
+                            <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 w-150 align-middle">
+                                    <thead class="text-dark fs-4">
+                                    <tr>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Tên Bệnh Nhân</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Nội Dung</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Thời Gian</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Hành Động</h6>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="b : ${benhNhan}">
+                                        <!-- Lặp qua danh sách lịch hẹn và kiểm tra mã bệnh nhân -->
+                                        <th:block th:each="l : ${lichhen}" th:if="${l.maBenhNhan == b.maBenhnhan}">
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal" th:text="${b.tenBenhnhan}"></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal" th:text="${l.noidung}"></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="mb-0 fw-normal fst-italic"
+                                                        th:text="${#dates.format(l.thoiGian, 'dd/MM/yyyy HH:mm')}"></h6>
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/editLichHen/{id}(id=${l.maLichHen})}">
+                                                        <i class="fas fa-edit text-primary"></i>
+                                                    </a>
+                                                    <a th:href="@{/deleteLichHen/{id}(id=${l.maLichHen})}">
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </th:block>
+                                    </th:block>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <script th:src="@{../libs/jquery/dist/jquery.min.js}"></script>
 <script th:src="@{../libs/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
