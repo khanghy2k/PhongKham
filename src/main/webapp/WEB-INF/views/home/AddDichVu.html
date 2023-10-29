@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm Bệnh Nhân</title>
+  <link rel="shortcut icon" type="image/png" th:href="@{../images/logos/favicon.png}"/>
+  <link rel="stylesheet" th:href="@{../css/styles.min.css}"/>
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css}"
+        integrity="sha512-..." crossorigin="anonymous"/>
+  <link rel="stylesheet" th:href="@{../css/benhnhancss.css}"/>
+</head>
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a th:href="@{/home/home}" class="text-nowrap logo-img">
+          <img th:src="@{../images/logos/dark-logo.svg}" width="180" alt=""/>
+        </a>
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+          <i class="ti ti-x fs-8"></i>
+        </div>
+      </div>
+      <div th:replace="layout/sidebarNavigation.html::sidebar"></div>
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <div class="body-wrapper">
+    <div th:replace="layout/header::header"></div>
+    <div class="row">
+      <div class="col-lg-12 d-flex align-items-stretch">
+        <div class="card w-100">
+          <div class="card-body p-4 mt-5">
+            <div class="container">
+              <header>Thêm dịch vụ</header>
+              <form action="#" th:action="@{/AddDichVu}" th:object="${dichvu}" method="post">
+                <div class="form first">
+                  <div class="details personal">
+                    <div class="fields">
+                      <div class="input-field">
+                        <label>Tên Dịch vụ</label>
+                        <input type="text" th:field="*{tenDichVu}">
+                        <p class="error-message" th:if="${#fields.hasErrors('TenDichVu')}" th:errors="*{tenDichVu}">Lỗi tài khoản</p>
+                      </div>
+                      <div class="input-field">
+                        <label>Mô Tả</label>
+                        <input name="mota" type="text" th:field="*{mota}">
+                        <p class="error-message" th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}">Lỗi tài khoản</p>
+                      </div>
+                      <div class="input-field">
+                        <label>Giá</label>
+                        <input name="gia" type="text" th:field="*{gia}">
+                        <p class="error-message" th:if="${#fields.hasErrors('gia')}" th:errors="*{gia}">Lỗi tài khoản</p>
+                      </div>
+
+                      <div class="input-field">
+                        <button class="nextBtn">
+                          <span class="btnText">Thêm</span>
+                          <i class="uil uil-navigator"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{../libs/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{../libs/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{../js/sidebarmenu.js}"></script>
+<script th:src="@{../js/app.min.js}"></script>
+<script th:src="@{../libs/apexcharts/dist/apexcharts.min.js}"></script>
+<script th:src="@{../libs/simplebar/dist/simplebar.js}"></script>
+<script th:src="@{../js/dashboard.js}"></script>
+</body>
+</html>
